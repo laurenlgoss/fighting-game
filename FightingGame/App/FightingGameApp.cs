@@ -1,12 +1,19 @@
-﻿namespace FightingGame.App;
+﻿using FightingGame.UserInteraction;
+
+namespace FightingGame.App;
 
 /// <summary>
 /// Manages fighting game app workflow.
 /// </summary>
 public class FightingGameApp
 {
-    public FightingGameApp()
+    private readonly IFightingGameUserInteractor _fightingGameUserInteractor;
+    private readonly IFightingGame _fightingGame;
+
+    public FightingGameApp(IFightingGameUserInteractor fightingGameUserInteractor, IFightingGame fightingGame)
     {
+        _fightingGameUserInteractor = fightingGameUserInteractor;
+        _fightingGame = fightingGame;
     }
 
     /// <summary>
@@ -15,17 +22,15 @@ public class FightingGameApp
     public void Run()
     {
         // Prompt user to build character
-
+        Character character = _fightingGameUserInteractor.BuildCharacter();
 
         // Generate enemy
-
+        Enemy enemy = new();
 
         // Start fight
-
+        GameResult result = _fightingGame.Start(character, enemy);
 
         // Show result
-
-
-        throw new NotImplementedException();
+        _fightingGameUserInteractor.ShowResult(result);
     }
 }
