@@ -1,4 +1,6 @@
-﻿using FightingGame.UserInteraction;
+﻿using FightingGame.Characters;
+using FightingGame.Game;
+using FightingGame.UserInteraction;
 
 namespace FightingGame.App;
 
@@ -22,13 +24,13 @@ public class FightingGameApp
     public void Run()
     {
         // Prompt user to build character
-        Character character = _fightingGameUserInteractor.BuildCharacter();
+        Player player = _fightingGameUserInteractor.BuildPlayer();
 
         // Generate enemy
         Enemy enemy = new();
 
-        // Start fight
-        GameResult result = _fightingGame.Start(character, enemy);
+        // Start fighting game
+        GameResult result = _fightingGame.Play(player, enemy);
 
         // Show result
         _fightingGameUserInteractor.ShowResult(result);

@@ -1,12 +1,16 @@
 ﻿using FightingGame.App;
+using FightingGame.UserInteraction;
+
+ConsoleUserInteractor userInteractor = new();
+FightingGameApp app = new();
 
 try
 {
-    FightingGameApp app = new();
-
     app.Run();
 }
 catch (Exception ex)
 {
-    Console.WriteLine(ex.Message);
+    userInteractor.PrintError(ex);
 }
+
+userInteractor.Exit();
