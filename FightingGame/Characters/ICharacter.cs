@@ -3,11 +3,11 @@
 public interface ICharacter
 {
     public string Name { get; }
-    public byte Health { get; }
-    public byte Attack { get; }
-    public byte Defense { get; }
-    //public byte Speed { get; }
+    public int Health { get; }
+    public int Attack { get; }
+    public int Defense { get; }
+    //public int Speed { get; }
 
-    public void ReduceHealth(byte attack);
+    public void ReduceHealth(int attack);
     public bool IsAlive();
 }

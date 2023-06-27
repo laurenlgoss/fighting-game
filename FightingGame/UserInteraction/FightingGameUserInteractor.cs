@@ -16,16 +16,28 @@ public class FightingGameUserInteractor : IFightingGameUserInteractor
         _userInteractor = userInteractor;
     }
 
+    /// <summary>
+    /// Prompts user to create player with custom stats.
+    /// </summary>
+    /// <returns>Player object created by user.</returns>
     public Player BuildPlayer()
     {
         _userInteractor.PrintMessage("Create your character:");
 
         string name = ReadStatString(nameof(Player.Name));
-        byte health = ReadStat(nameof(Player.Attack));
-        byte attack = ReadStat(nameof(Player.Health));
-        byte defense = ReadStat(nameof(Player.Defense));
 
-        return new Player(name, health, attack, defense);
+        // TODO: How to manage total stat point allotment?
+        int maxTotalStatPoints = Player.MaxTotalStatPoints;
+        int health = ReadStat(nameof(Player.Health));
+        int attack = ReadStat(nameof(Player.Attack));
+        int defense = ReadStat(nameof(Player.Defense));
+
+        Player player = new(name, health, attack, defense);
+
+        _userInteractor.PrintMessage(Environment.NewLine + "Player created:");
+        _userInteractor.PrintMessage(player.ToString());
+
+        return player;
     }
 
     private string ReadStatString(string statName)
@@ -39,15 +51,12 @@ public class FightingGameUserInteractor : IFightingGameUserInteractor
         return stat;
     }
 
-    private byte ReadStat(string statName)
+    private int ReadStat(string statName)
     {
-        string statString = ReadStatString(statName);
-
-        byte stat;
-        while (!byte.TryParse(statString, out stat))
+        int stat;
+        while (!int.TryParse(ReadStatString(statName), out stat))
         {
             _userInteractor.PrintMessage("Enter valid number.");
-            statString = ReadStatString(statName);
         }
         return stat;
     }

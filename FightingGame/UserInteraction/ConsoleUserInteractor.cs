@@ -1,4 +1,6 @@
-﻿namespace FightingGame.UserInteraction;
+﻿using System.Reflection;
+
+namespace FightingGame.UserInteraction;
 
 /// <summary>
 /// Interacts with user via Console.
@@ -7,7 +9,7 @@ public class ConsoleUserInteractor : IUserInteractor
 {
     public void Exit()
     {
-        Console.WriteLine("Press any key to close.");
+        PrintMessage("Press any key to close.");
         Console.ReadKey();
     }
 
@@ -15,7 +17,7 @@ public class ConsoleUserInteractor : IUserInteractor
     {
         ConsoleColor defaultTextColor = Console.ForegroundColor;
         Console.ForegroundColor = ConsoleColor.Red;
-        Console.WriteLine(ex.Message);
+        PrintMessage(ex.Message);
         Console.ForegroundColor = defaultTextColor;
     }
 
