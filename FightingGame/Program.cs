@@ -2,7 +2,9 @@
 using FightingGame.UserInteraction;
 
 ConsoleUserInteractor userInteractor = new();
-FightingGameApp app = new();
+FightingGameUserInteractor fightingGameUserInteractor = new(userInteractor);
+FightingGame.Game.FightingGame fightingGame = new();
+FightingGameApp app = new(fightingGameUserInteractor, fightingGame);
 
 try
 {

@@ -12,11 +12,13 @@
     <None Remove="UserInteraction\" />
     <None Remove="Game\" />
     <None Remove="Characters\" />
+    <None Remove="Extensions\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App\" />
     <Folder Include="UserInteraction\" />
     <Folder Include="Game\" />
     <Folder Include="Characters\" />
+    <Folder Include="Extensions\" />
   </ItemGroup>
 </Project>

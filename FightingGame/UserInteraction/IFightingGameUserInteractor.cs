@@ -4,9 +4,9 @@ using FightingGame.Game;
 namespace FightingGame.UserInteraction;
 
 /// <summary>
-/// Interacts with user regarding fighting game.
+/// Encapsulates interactions with user specific to fighting game.
 /// </summary>
-public interface IFightingGameUserInteractor : IUserInteractor
+public interface IFightingGameUserInteractor
 {
     Player BuildPlayer();
     void ShowResult(GameResult result);

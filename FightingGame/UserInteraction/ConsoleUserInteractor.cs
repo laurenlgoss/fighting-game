@@ -20,4 +20,6 @@ public class ConsoleUserInteractor : IUserInteractor
     }
 
     public void PrintMessage(string message) => Console.WriteLine(message);
+
+    public string? ReadInput() => Console.ReadLine();
 }

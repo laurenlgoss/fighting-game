@@ -7,5 +7,5 @@ namespace FightingGame.Game;
 /// </summary>
 public interface IFightingGame
 {
-    GameResult Play(Player player, Enemy enemy);
+    GameResult Play(ICharacter player, ICharacter enemy);
 }
